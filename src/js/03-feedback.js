@@ -24,11 +24,16 @@ function onFormSub(event) {
   const message = formElements.message.value;
 
   if (email === '' || message === '') {
-    return;
+    alert('fill in all fields');
+  }
+  const formInputData = {
+    email, message
   }
 
   event.currentTarget.reset();
+  
   localStorage.removeItem(STORAGE_KEY);
+  console.log(formInputData)
 }
 
 function populateFormEl() {
