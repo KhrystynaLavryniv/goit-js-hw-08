@@ -14,7 +14,7 @@ formRef.addEventListener('input', throttle(onInput, 500));
 
 function onInput(event) {
   formData[event.target.name] = event.target.value;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+  if (formData !== "") { localStorage.setItem(STORAGE_KEY, JSON.stringify(formData)) };
 }
 
 function onFormSub(event) {
@@ -40,7 +40,7 @@ function populateFormEl() {
   const savedInfo = localStorage.getItem(STORAGE_KEY);
   const parsedSavedInfo = JSON.parse(savedInfo);
   if (parsedSavedInfo) {
-    inputRef.value = parsedSavedInfo.email;
-    textareaRef.value = parsedSavedInfo.message;
+    inputRef.value = parsedSavedInfo.email ? parsedSavedInfo.email : '' ;
+    textareaRef.value = parsedSavedInfo.message ?  parsedSavedInfo.message : '' ;
   }
 }
